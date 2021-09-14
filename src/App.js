@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import {  ThemeProvider, createTheme, CssBaseline } from '@material-ui/core'  
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
+import { ToastContainer } from 'react-toastify';
+import './index.css'
+
 
 function App() {
+   
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#1f1f1f'
+      },
+      secundary: {
+        main: '#f2f2c2'
+      }
+    }
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <BrowserRouter>
+      <ThemeProvider theme={theme} >
+      <ToastContainer autoClose={3000} />
+      <Routes />
+      <CssBaseline />
+      </ThemeProvider>
+    </BrowserRouter>
+  
+  )
 
+}
 export default App;
